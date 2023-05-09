@@ -3,9 +3,15 @@ import de.looksgood.ani.*;
 
 Animation w;
 
+int e = second();
+
 
 int nhomework = 1;
 homework[] h = new homework[nhomework];
+int nhomework2 =1;
+homework2[] o = new homework2[nhomework2];
+
+
 josh s;
 boolean test = true;
 Sound m;
@@ -24,6 +30,7 @@ PVector acceleration = new PVector (0,0);
 void setup()  //this.currentAnim = #. try this out for changing animations.
 {
   size(1200,600);
+frameRate(30);
   //fullScreen();
   
   
@@ -63,12 +70,13 @@ void gameStateChange(int state)
   gameState = state;
   if(gameState == SPLASH) splash_init();
   if(gameState == PLAY) game_init();
-   if(gameState == LOSE) lose_init();
+  if(gameState == LOSE) lose_init();
 }
 
 void lose_init()
 {
   s = new josh("test");
+  
 }
 
 void lose_run()
@@ -121,6 +129,7 @@ void splash_run()
   s.check();
   textSize(60);
   text("Press J to Begin", 350, height/3);
+  text("Press A to punch left and D to punch right",50, height/2);
 }
 
 void splash_keyPressed()
@@ -150,8 +159,14 @@ void game_init()
  
   for(int i = 0; i < nhomework; i = i+1)
  {
-  h[i] = new homework("homework"+i);
+  h[i] = new homework("homeworkIdle"+i);
  }
+ 
+ for(int i = 0; i < nhomework2; i = i+1)
+ {
+  o[i] = new homework2("homeworkIdle"+i);
+ }
+ 
 }
 
 void game_run()
@@ -178,7 +193,12 @@ void game_run()
  }
  //m.display();
  //m.update();
- 
+ for(int i = 0; i < nhomework2; i = i+1)
+ {
+  o[i].display();
+  o[i].update();
+  o[i].check();
+ }
  
 }
 
@@ -193,9 +213,7 @@ void game_keyPressed()
      s.velocity.y = -6;
      
      s.currentAnim = 4;
-     
-     
-      println("up");
+    
       
     }
   else if (keyCode == DOWN)
@@ -205,7 +223,7 @@ void game_keyPressed()
     s.currentAnim = 5;   
     
           
-      println("down");
+      
     }
   else if (keyCode == LEFT)
     {
@@ -213,7 +231,7 @@ void game_keyPressed()
      s.velocity.y = 0;
      s.currentAnim =5;
      
-    println("left");
+    
     
     }
   else if (keyCode == RIGHT)
@@ -222,13 +240,12 @@ void game_keyPressed()
       s.velocity.y = 0;
       s.currentAnim =4;
     
-     println("right");
+     
     }
     
     
   
-  //s.acceleration.x = s.acceleration.x * (-1.0);
- //s.velocity.x = s.velocity.x * (-1.0);
+  
 }
 if(keyPressed)
   {
@@ -236,7 +253,10 @@ if(keyPressed)
     {
      
       s.currentAnim=2;
-      
+      s.anim[s.currentAnim].counter=0;
+      s.anim[s.currentAnim].currentFrame=0;
+    s.anim[s.currentAnim].pause=false;
+    
     }
   
   }
@@ -247,7 +267,10 @@ if(keyPressed)
     {
      
       s.currentAnim=3;
-      
+      s.anim[s.currentAnim].counter=0;
+      s.anim[s.currentAnim].currentFrame=0;
+    s.anim[s.currentAnim].pause=false;
+    
     }
   
   }
@@ -266,7 +289,7 @@ if(keyPressed)
      s.velocity.y = 0;
      s.currentAnim=1;
      
-      println("up");
+      
       
     }
   else if (keyCode == DOWN)
@@ -275,7 +298,7 @@ if(keyPressed)
     s.velocity.y = 0;
     s.currentAnim = 0;    
          
-      println("down");
+     
     }
   else if (keyCode == LEFT)
     {
@@ -283,7 +306,7 @@ if(keyPressed)
      s.velocity.y = 0;
      s.currentAnim = 0;
      
-    println("left");
+   
     
     }
   else if (keyCode == RIGHT)
@@ -292,12 +315,9 @@ if(keyPressed)
       s.velocity.y = 0;
       s.currentAnim = 1;
     
-     println("right");
+     
     }
   
-  
-  //s.acceleration.x = s.acceleration.x * (-1.0);
- //s.velocity.x = s.velocity.x * (-1.0);
 }
 
 

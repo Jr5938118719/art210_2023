@@ -1,20 +1,15 @@
-class homework extends Sprite
+class homework2 extends Sprite
 {
   float maxSpeed = 3;
   
-  
-  
-  homework(String id)
+  homework2(String id)
   {
-   
     super(id);
-   
-     this.acceleration = new PVector(0.07,0);
+     this.acceleration = new PVector(-0.07,0);
     this.registerAnimation(new Animation("homeworkIdle","png"));
     this.registerAnimation(new Animation("homeworkDefeat","png"));
-   // this.registerAnimation(new Animation("homeworkDefeat_flipped","png"));
-    this.anim[1].playOnce =true;
-    this.location.x = -this.w+200;
+    // this.registerAnimation(new Animation("homeworkDefeat_flipped","png"));
+    this.location.x = this.w+1000;
     this.location.y = random(200,500);
     //this.rotation = 90.0;
     this.w = 40;
@@ -24,11 +19,10 @@ class homework extends Sprite
     this.collRadius=this.w;
     this.translation.y=this.h / (-3.5);
     this.translation.x=50;
+
   }
   
-  
-  
-  void check()
+   void check()
   {
   Collision coll = new Collision(this,true);
   int res = coll.box2circle(100,100,width-200,height-200+this.h,false);
@@ -46,11 +40,11 @@ class homework extends Sprite
   {
       if(res == Collision.RIGHT || res == Collision.LEFT)
       {
-       this.location.x = -this.w+100;
+       this.location.x = this.w+1100;
         this.location.y = random(150,height-150);
         this.velocity.x = 0;
         this.velocity.y = 0;
-        this.acceleration.x = random(0.1, 0.2);
+        this.acceleration.x = random(-0.1, -0.2);
         //this.acceleration.y = 0.1;
         this.currentAnim = 0;
         delay(115);

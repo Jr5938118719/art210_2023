@@ -4,10 +4,10 @@ class josh extends Sprite
   
   josh(String id)
   {
+    
     super(id);
-    //this.acceleration = new PVector(0,0);
-     
-  //s.registerAnimation(h);
+    
+ 
   
   if(gameState == SPLASH)
   {
@@ -15,6 +15,7 @@ class josh extends Sprite
   this.registerAnimation(new Animation("joshIdle_flipped","png"));
   this.scale = 0.4;
   this.h = 170;
+  
   this.location.y = height-this.h;
   }
      
@@ -23,25 +24,30 @@ class josh extends Sprite
   this.registerAnimation(new Animation("joshIdle","png"));
   this.registerAnimation(new Animation("joshIdle_flipped","png"));
   this.registerAnimation(new Animation("attack","png"));
+  
+  this.anim[2].playOnce = true;
   this.registerAnimation(new Animation("attack_flipped","png"));
+  this.anim[3].playOnce = true;
   this.registerAnimation(new Animation("joshWalking","png"));
   this.registerAnimation(new Animation("joshWalking_flipped","png"));
   
   this.scale = 0.4;
   this.h = 170;
+  this.w =150;
   this.location.y = height-this.h;
-  
-     
-  
+   this.translation.x = 0;
   
   }
+     
      if(gameState == LOSE)
      {
        this.registerAnimation(new Animation("defeat","png"));
+       this.anim[0].playOnce = true;
        this.registerAnimation(new Animation("defeat","png"));
+       this.anim[1].playOnce = true;
        this.scale = 0.4;
        this.h = 170;
-        this.location.y = height-this.h;
+       this.location.y = height-this.h;
      }
      
     
@@ -71,16 +77,7 @@ class josh extends Sprite
        
      }
      
-    //this.velocity.limit(this.maxSpeed);
     
-    // if(this.velocity.x < 0)
-     //{
-      // this.currentAnim = 1;
-     //}
-     //else
-    // {
-      // this.currentAnim = 0;
-    //}
      
       
   }

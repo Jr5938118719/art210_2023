@@ -65,51 +65,24 @@ class Sprite
     if(test)
     {
     noStroke();
+   
       fill(color(100,100,255,50));
-      circle(0,0,10);
+      circle(0,0,40);
       stroke(color(255,100,255,50));
+      
       rect(-reg.x,-reg.y,this.w,this.h);
+    
       noStroke();
       fill(color(0,0,255,100));
       circle(0,0,this.collRadius*2);
     }
+    
   }
   
   void check()
   {
     
-   /* Collision coll = new Collision(this,true);
-    int res = coll.box2circle(100,100,width-200,height-200);
-    println(res);
-    //if(res == Collision.RIGHT) this.location.x = 0;
-    
-   
-     if(res == Collision.RIGHT || res == Collision.LEFT)
-     {
-       s.velocity.x = s.velocity.x * (-1.0);
-       this.acceleration.x = this.acceleration.x * (-1.0);
-     }
-     
-     if(coll.circle2circle(a) == Collision.IN)
-     {
-       println("Gotcha");
-     }
-     
-     else
-     {
-       println("Catch me");
-     }
-     
-     if(this.velocity.x < 0)
-     {
-       this.currentAnim = 1;
-     }
-     else
-     {
-       this.currentAnim = 0;
-     }
-     this.velocity.limit(3);
-  */}
+   }
   
   
   
