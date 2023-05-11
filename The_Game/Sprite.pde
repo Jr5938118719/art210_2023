@@ -67,7 +67,7 @@ class Sprite
     noStroke();
    
       fill(color(100,100,255,50));
-      circle(0,0,40);
+      circle(0,0,60);
       stroke(color(255,100,255,50));
       
       rect(-reg.x,-reg.y,this.w,this.h);
