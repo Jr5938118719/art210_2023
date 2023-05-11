@@ -3,8 +3,6 @@ import de.looksgood.ani.*;
 
 Animation w;
 
-int e = second();
-
 
 int nhomework = 1;
 homework[] h = new homework[nhomework];
@@ -38,7 +36,7 @@ frameRate(30);
  Ani.init(this);
   gameStateChange(SPLASH);
   
-  
+  test = false;
 }
 
 void draw()
@@ -81,20 +79,28 @@ void lose_init()
 
 void lose_run()
 {
-  background(0,0,0);
+  background(50,5,5);
+  
+  fill(30);
+  rect(0,125,width,height);
+  
+  
   s.display();
   s.update();
   s.check();
   
-  textSize(60);
-  text("Press J to Try Again", 350, height/3);
+  fill(100,10,10);
+ textSize(75);
+  text("Overwhelmed...", 350, height/3);
+  textSize(40);
+  text("Press S to Try Again", 425, height/2);
 }
 
 void lose_keyPressed()
 {
   if(keyPressed)
   {
-    if (key == 'j' || key == 'J')
+    if (key == 's' || key == 'S')
     {
   gameStateChange(PLAY);
 }
@@ -123,20 +129,30 @@ void splash_init()
 
 void splash_run()
 {
-  background(255,100,200);
+  background(255,200,200);
+  
+   fill(220);
+  rect(0,125,width,height);
+  
   s.display();
   s.update();
   s.check();
-  textSize(60);
-  text("Press J to Begin", 350, height/3);
-  text("Press A to punch left and D to punch right",50, height/2);
+  textSize(70);
+  
+  fill(80,120,220);
+  text("Homework Beat 'Em Up", 250, height/4);
+  
+  textSize(40);
+  text("Press S to Begin", 450, height/2);
+  textSize(20);
+  text("Press A to punch left and D to punch right",410, 350);
 }
 
 void splash_keyPressed()
 {
   if(keyPressed)
   {
-    if (key == 'j' || key == 'J')
+    if (key == 's' || key == 'S')
     {
   gameStateChange(PLAY);
     }
@@ -166,7 +182,7 @@ void game_init()
  {
   o[i] = new homework2("homeworkIdle"+i);
  }
- 
+ // test = false;
 }
 
 void game_run()
@@ -210,7 +226,7 @@ void game_keyPressed()
     if (keyCode == UP)
     {
     s.velocity.x = 0;
-     s.velocity.y = -6;
+     s.velocity.y = -7;
      
      s.currentAnim = 4;
     
@@ -219,7 +235,7 @@ void game_keyPressed()
   else if (keyCode == DOWN)
     {
      s.velocity.x = 0;
-    s.velocity.y = 6;
+    s.velocity.y = 7;
     s.currentAnim = 5;   
     
           
@@ -227,7 +243,7 @@ void game_keyPressed()
     }
   else if (keyCode == LEFT)
     {
-    s.velocity.x = -6;
+    s.velocity.x = -7;
      s.velocity.y = 0;
      s.currentAnim =5;
      
@@ -236,7 +252,7 @@ void game_keyPressed()
     }
   else if (keyCode == RIGHT)
     {
-      s.velocity.x = 6;
+      s.velocity.x = 7;
       s.velocity.y = 0;
       s.currentAnim =4;
     
